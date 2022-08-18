@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        //for loop-loops through a block of code a number of times
+       // for/in - loops through the properties of an object
+//for/of - loops through the values of an iterable object
+//while - check for the condition and execute the block
+//do/while - execute the block and then check for the condition
+
+
+/*
+let text = "";
+for (let i = 0; i < 5; i++) {
+  text += "The number is " + i + "<br>";
+}
+document.getElementById("demo").innerHTML = text;
+*/
+
+
+//nested loop
+/*
+for(let i=0;i<=100;i++){
+    console.log("hi",i)
+    for(let j=0;j<=5;j++)
+    console.log("hello",j)
+}
+*/
+
+//while
+/* 
+let i=1;
+while(i<=5)
+{
+    console.log("hi this is lee");
+    i++
+}
+console.log(i);
+*/
+
+// do while
+/*
+let i=10;
+do{
+    console.log("hi this is lee",i)
+    i++;
+}while(i<=5);
+*/
+// which one is best loop fo or while
+/*
+1) when you know the starting point and the ending point for loop is the best
+
+let num="123456778";
+let arr=num.split('').reverse().join("");
+console.log(arr)
+
+*/
+//break-to jump out of the loop break statement is used
+/*
+for(let i=0;i<=10;i++){
+    if(i==5){
+        break;
+    }
+    console.log("hi this is lee",i)
+}
+*/
+//The continue statement (with or without a label reference) can only be used to skip one loop iteration.
+/*
+for(let i=0;i<=10;i++){
+    if(i==5){
+        continue;
+    }
+    console.log("hi this is lee",i)
+}
+*/
+function reverse(n){
+    n=n+"";
+    return n.split("").reverse().join("");
+
+}
+console.log(Number(reverse(12345)))
+</script>
+</body>
+</html>

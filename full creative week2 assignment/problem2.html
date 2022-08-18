@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number"  id="input">
+    <h3 id="output"></h3>
+    
+    <script>
+       let arr = [1, 2, 3, 4, 5, 6,7,8,9,10];
+
+   let input = document.getElementById("input");
+   let output = document.getElementById("output");
+
+     input.addEventListener("change", function () {
+
+   //it is used to clear the output
+    output.innerHTML = "";
+
+    for (let i = 0; i < arr.length; i = i + Number(this.value)) {
+      // console.log(i);
+        for (let j = i; j < i + Number(this.value); j++) {
+      // console.log(j);
+      if(typeof(arr[j])!="undefined"){
+        output.innerHTML += `${arr[j]} `;
+        }
+
+          
+       //console.log(arr[j])
+        }
+        
+        output.innerHTML += "<br>";
+    }
+
+    //it is used to clear the input field
+    this.value = "";
+
+});
+    </script>
+</body>
+</html>

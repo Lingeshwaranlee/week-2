@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingesh bro</title>
+
+    <style>
+        #main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 2fr;
+            width: 800px;
+        }
+
+        #first {
+            display: grid;
+            margin-right: 30px;
+        }
+
+        #second {
+            display: grid;
+        }
+
+        #third {
+            display: grid;
+            margin-left: 30px;
+
+        }
+
+        input,
+        button {
+            padding: 5px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-right: 25px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h3>Enter subject name and it's marks</h3>
+    <div id="main">
+        <div id="first">
+            <h4>Subject</h4>
+            <input type="text" id="1" required>
+            <input type="text" id="2" required>
+            <input type="text" id="3" required>
+            <input type="text" id="4" required>
+            <input type="text" id="5" required>
+
+        </div>
+
+        <div id="second">
+            <h4>Marks</h4>
+            <input type="number" id="11" required>
+            <input type="number" id="12" required>
+            <input type="number" id="13" required>
+            <input type="number" id="14" required>
+            <input type="number" id="15" required>
+
+        </div>
+
+        <div id="third">
+            <h3>Result : </h3>
+            <h4 id="result">
+
+            </h4>
+        </div>
+
+    </div>
+    <button id="display">Display</button>
+    <button id="sortSub">Sort the subjects by 2nd char</button>
+    <button id="total">Total Marks</button>
+    <button id="sortMarks">Sort by Marks</button>
+
+
+    <script>
+
+        let inp = document.getElementsByTagName("input");
+        let result = document.getElementById("result");
+
+        let subMarks = {};
+        let marks = [];
+        let sub = [];
+        document.getElementById("display").addEventListener("click", () => {
+            for (let i = 0; i < 5; i++) {
+                sub.push(inp[i].value);
+            }
+            for (let i = 5; i < 10; i++) {
+                marks.push(inp[i].value);
+            }
+            for (let i = 0; i < 5; i++) {
+                subMarks[sub[i]] = marks[i];
+            }
+            result.innerHTML = "";
+            for (let i in subMarks) {
+                result.innerHTML += `${i}  -->  ${subMarks[i]} <br> <br>`;
+            }
+
+        })
+
+        document.getElementById("total").addEventListener("click", () => {
+
+            result.innerHTML = "";
+            let sum = 0;
+            for (let i of marks) {
+                sum += Number(i);
+            }
+            result.innerText = sum;
+
+        })
+
+        document.getElementById("sortMarks").addEventListener("click", () => {
+
+            for (let i = 0; i < marks.length - 1; i++) {
+                for (let j = 0; j < marks.length - i - 1; j++) {
+                    if (Number(marks[j]) > Number(marks[j + 1])) {
+                        let temp = marks[j];
+                        let st = sub[j];
+                        marks[j] = marks[j + 1];
+                        sub[j] = sub[j + 1];
+                        marks[j + 1] = temp;
+                        sub[j + 1] = st;
+                    }
+                }
+            }
+
+            let newObj = {};
+            for (let i = 0; i < 5; i++) {
+                newObj[sub[i]] = marks[i];
+            }
+            // console.log(newObj);
+
+            result.innerHTML = "";
+            for (let i in newObj) {
+                result.innerHTML += `${i}  -->  ${newObj[i]} <br> <br>`;
+            }
+
+
+        })
+
+
+        document.getElementById("sortSub").addEventListener("click", () => {
+
+            for (let i = 0; i < sub.length - 1; i++) {
+                for (let j = 0; j < sub.length - i - 1; j++) {
+                    if (sub[j].charCodeAt(1) > sub[j + 1].charCodeAt(1)) {
+                        let temp = sub[j];
+                        let mar = marks[j];
+                        sub[j] = sub[j + 1];
+                        marks[j] = marks[j + 1];
+                        sub[j + 1] = temp;
+                        marks[j + 1] = mar;
+                    }
+                }
+            }
+
+            let newObj = {};
+            for (let i = 0; i < 5; i++) {
+                newObj[sub[i]] = marks[i];
+            }
+            // console.log(newObj);
+
+            result.innerHTML = "";
+            for (let i in newObj) {
+                result.innerHTML += `${i}  -->  ${newObj[i]} <br> <br>`;
+            }
+
+        })
+    </script>
+
+
+
+</body>
+
+</html>
